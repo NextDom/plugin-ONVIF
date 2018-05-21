@@ -1,4 +1,4 @@
-[![Join the chat at https://gitter.im/NextDom/plugin-ONVIF](https://badges.gitter.im/NextDom/plugin-ONVIF.svg)](https://gitter.im/NextDom/plugin-ONVIF?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+plugin-ONVIF
 
 [![license](https://img.shields.io/github/license/NextDom/plugin-ONVIF.svg)](./LICENSE) [![GitHub contributors](https://img.shields.io/github/contributors/NextDom/plugin-ONVIF.svg)](../../graphs/contributors) [![GitHub release](https://img.shields.io/github/release/NextDom/plugin-ONVIF.svg)](../../releases) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/_USERNAME) [![Waffle.io - Columns and their card count](https://badge.waffle.io/NextDom/plugin-ONVIF.svg?columns=all)](https://waffle.io/NextDom/plugin-ONVIF)
 
@@ -36,3 +36,5 @@ Template de permettant de céér des plugins pour Jeedom
 
 
 [![Support via PayPal](https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg)](https://www.paypal.me/_USERNAME/)
+
+[![Join the chat at https://gitter.im/NextDom/plugin-ONVIF](https://badges.gitter.im/NextDom/plugin-ONVIF.svg)](https://gitter.im/NextDom/plugin-ONVIF?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
