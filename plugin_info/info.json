@@ -1,0 +1,14 @@
+{
+  "id": "ONVIF",
+  "name": "Onvif",
+  "description": "Plugin Jeedom permettant de gérer les protocole ONVIF",
+  "licence": "GPL",
+  "author": "NextDom",
+  "require": "3.0",
+  "category": "security",
+  "hasDependency": true,
+  "hasOwnDeamon": false,
+  "maxDependancyInstallTime": 0,
+  "changelog": "https://nextdom.github.io/plugin-ONVIF/#language#/changelog",
+  "documentation": "https://nextdom.github.io/plugin-ONVIF/#language#/"
+}
