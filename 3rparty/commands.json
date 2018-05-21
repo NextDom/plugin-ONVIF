@@ -9,7 +9,7 @@
     "type": "info",
     "categorie": "commande",
     "subtype": "string"
-  {
+  },{
     "name": "Position",
     "type": "info",
     "categorie": "commande",
