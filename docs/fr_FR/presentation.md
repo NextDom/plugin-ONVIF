@@ -1,8 +1,9 @@
 # Description
 
-Plugin permettant de ....
-
-description
+Plugin permettant de piloter des caméras supportant le protocole Onvif:
+Fonctions principales:
+Contrôle du PTZ
+Contrôle des réglages de l'image (luminosité, contraste...)
 
 # Market
 
@@ -18,6 +19,4 @@ Retrouvez le sur le [Market](https://www.jeedom.com/market/index.php?v=d&p=marke
 
 # Forum
 
-Lien vers le [Forum](https://www.jeedom.com/forum/viewtopic.php?t=xxxx)
-
-~~Remplacer `t=xxxx` par le bon numéro de forum~~
+Lien vers le [Forum](https://www.jeedom.com/forum/viewtopic.php?f=134&t=37495)
