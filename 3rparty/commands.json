@@ -1,0 +1,63 @@
+[
+  {
+    "name": "Date",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Preset",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Position",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "StreamURL",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "ImageURL",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Contraste",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Luminosite",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Saturation",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Nettete",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Constructeur",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Modèle",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Numero_serie",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  }
+  ]
