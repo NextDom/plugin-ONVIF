@@ -8,7 +8,19 @@ plugin-ONVIF
 
 # Présentation:
 
-Template de permettant de céér des plugins pour Jeedom
+Ce plugin permet de controler les caméras supportant le protocole ONVIF. 
+Les commandes supportées:
+
+
+
+COMMANDES
+
+
+
+Les infos remontées dans Jeedom:
+
+
+INFO
 
 # Documentation du plugin, comment créér un plugin:
 
