@@ -5,12 +5,92 @@
     "categorie": "commande",
     "subtype": "string"
   },{
-    "name": "Preset",
+    "name": "Constructeur",
     "type": "info",
     "categorie": "commande",
     "subtype": "string"
   },{
-    "name": "Position",
+    "name": "Modèle",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Numero_de_série",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Nom",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Xmin",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Xmax",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Ymin",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Ymax",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Zmin",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Zmax",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Nombre_Presets_max",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Nombre_Patrouille_max",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Support_de_la_position_Home",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Position X",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Position Y",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Position Zoom",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Status_mouvement_Rotation",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Status_Zoom",
     "type": "info",
     "categorie": "commande",
     "subtype": "string"
@@ -45,17 +125,47 @@
     "categorie": "commande",
     "subtype": "string"
   },{
-    "name": "Constructeur",
+    "name": "Profil",
     "type": "info",
     "categorie": "commande",
     "subtype": "string"
   },{
-    "name": "Modèle",
+    "name": "Token_profil",
     "type": "info",
     "categorie": "commande",
     "subtype": "string"
   },{
-    "name": "Numero_serie",
+    "name": "PTZ_Token",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Video_Encoder_Token",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Video_Analitique_Token",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Metadata_Token",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Vitesse_X",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Vitesse_Y",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+  },{
+    "name": "Vitesse_Z",
     "type": "info",
     "categorie": "commande",
     "subtype": "string"
