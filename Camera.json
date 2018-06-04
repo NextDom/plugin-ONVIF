@@ -1,2 +1,6 @@
 {
-Brand :
+    "brand": "Date",
+    "type": "info",
+    "categorie": "commande",
+    "subtype": "string"
+}
