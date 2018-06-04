@@ -18,6 +18,12 @@ class HostONVIF
     private $_Ymax;
     private $_Zmin;
     private $_Zmax;
+    private $_Xspeedmin;
+    private $_Xspeedmax;
+    private $_Yspeedmin;
+    private $_Yspeedmax;
+    private $_Zspeedmin;
+    private $_Zspeedmax;
 
 
 // LISTE DES GETTERS
@@ -75,6 +81,36 @@ class HostONVIF
     public function getZmax()
     {
         return $this->_Zmax;
+    }
+        
+    public function getXspeedmin()
+    {
+        return $this->_Xspeedmin;
+    }
+        
+    public function getXspeedmax()
+    {
+        return $this->_Xspeedmax;
+    }
+  
+    public function getYspeedmin()
+    {
+        return $this->_Yspeedmin;
+    }
+        
+    public function getYspeedmax()
+    {
+        return $this->_Yspeedmax;
+    }
+    
+    public function getZspeedmin()
+    {
+        return $this->_Zspeedmin;
+    }
+        
+    public function getZspeedmax()
+    {
+        return $this->_Zspeedmax;
     }
 
 // LISTE DES SETTERS
@@ -139,6 +175,42 @@ class HostONVIF
       $this->_Zmax = $ZMAX;
     }
 
+    public function setXspeedmin($XSPEEDMIN)
+    {
+  
+      $this->_Xspeedmin = $XSPEEDMIN;
+    }
+
+    public function setXspeedmax($XSPEEDMAX)
+    {
+  
+      $this->_Xspeedmax = $XSPEEDMAX;
+    }
+    
+    public function setYspeedmin($YSPEEDMIN)
+    {
+  
+      $this->_Yspeedmin = $YSPEEDMIN;
+    }
+
+    public function setYspeedmax($YSPEEDMAX)
+    {
+  
+      $this->_Yspeedmax = $YSPEEDMAX;
+    }
+    
+    public function setZspeedmin($ZSPEEDMIN)
+    {
+  
+      $this->_Zspeedmin = $ZSPEEDMIN;
+    }
+
+    public function setZspeedmax($ZSPEEDMAX)
+    {
+  
+      $this->_Zspeedmax = $ZSPEEDMAX;
+    }
+    
     public function hydrate(array $donnees)
 
     {
