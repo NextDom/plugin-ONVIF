@@ -1,44 +1,44 @@
 [
-{
-    "Brand": "Dahua",
-    "Model": "SD22202TGN",
-    "gethost": "true",
-    "getdeviceinfo": "true",
-    "getimage": "true",
-    "getnodes": "true",
-    "getstream": "true",
-    "getsnap": "true",
-    "getstatus": "true",
-    "getprofile": "true",
-    "getpresets": "true",
-    "gotohome": "true", 
-    "relativemove":"true",
-    "absolutemove":"true",
-    "removepreset":"true",
-    "setpreset":"true",
-    "gotopreset":"true",
-    "reboot":"true",
-    "setimagesettings":"true"
-},{
-    "Brand": "AUTRE",
-    "Model": "AUTRE",
-    "gethost": "true",
-    "getdeviceinfo": "true",
-    "getimage": "true",
-    "getnodes": "true",
-    "getstream": "true",
-    "getsnap": "true",
-    "getstatus": "true",
-    "getprofile": "true",
-    "getpresets": "true",
-    "gotohome": "true", 
-    "relativemove":"true",
-    "absolutemove":"true",
-    "removepreset":"true",
-    "setpreset":"true",
-    "gotopreset":"true",
-    "reboot":"true",
-    "setimagesettings":"true"
-}
+    {"Brand": "Dahua"
+        {"Model": "SD22202TGN"
+            {"gethost": "true",
+             "getdeviceinfo": "true",
+             "getimage": "true",
+             "getnodes": "true",
+             "getstream": "true",
+             "getsnap": "true",
+             "getstatus": "true",
+             "getprofile": "true",
+             "getpresets": "true",
+             "gotohome": "true", 
+             "relativemove":"true",
+             "absolutemove":"true",
+             "removepreset":"true",
+             "setpreset":"true",
+             "gotopreset":"true",
+             "reboot":"true",
+             "setimagesettings":"true"}
+        }
+    },
+    {"Brand": "AUTRE"
+        {"Model": "AUTRE"
+            {"gethost": "true",
+            "getdeviceinfo": "true",
+            "getimage": "true",
+            "getnodes": "true",
+            "getstream": "true",
+            "getsnap": "true",
+            "getstatus": "true",
+            "getprofile": "true",
+            "getpresets": "true",
+            "gotohome": "true", 
+            "relativemove":"true",
+            "absolutemove":"true",
+            "removepreset":"true",
+            "setpreset":"true",
+            "gotopreset":"true",
+            "reboot":"true",
+            "setimagesettings":"true"}
+        }
+    }
 ]
-// GOTOHOME DEPEND OF HOME SUPPORTED GETNODES
