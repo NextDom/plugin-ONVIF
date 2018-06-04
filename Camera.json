@@ -10,7 +10,7 @@
     "getstatus": "true",
     "getprofile": "true",
     "getpresets": "true",
-    "gotohome": "true", // DEPEND OF HOME SUPPORTED NODES
+    "gotohome": "true", 
     "relativemove":"true",
     "absolutemove":"true",
     "removepreset":"true",
@@ -19,3 +19,4 @@
     "reboot":"true",
     "setimagesettings":"true"
 }
+// GOTOHOME DEPEND OF HOME SUPPORTED GETNODES
