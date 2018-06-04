@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . '/../../../script/core/ressources/HostONVIF.php';
+require_once __DIR__ . '/../../../script/core/ressources/ONVIF.php';
 
-require_once "HostONVIF.php";
+require_once "ONVIF.php";
 
 $camera_un = new HostONVIF();
 
