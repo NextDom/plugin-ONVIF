@@ -10,6 +10,12 @@ plugin-ONVIF
 
 Ce plugin permet de controler les caméras supportant le protocole ONVIF. 
 
+Dependances requise:
+
+`npm install onvif`
+
+`npm install minimist`
+
 Les commandes supportées:
 
 COMMANDES
