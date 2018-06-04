@@ -440,7 +440,7 @@ class HostONVIF
         $this -> json_validate($node);
 
         // SI LE FICHIER EST VALIDE ALORS
-        //print_r($info);
+        //print_r($node);
 
 
         $nodejson = json_decode($node, true);
