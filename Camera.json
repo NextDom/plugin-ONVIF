@@ -1,3 +1,4 @@
+[
 {
     "Brand": "Dahua",
     "Model": "SD22202TGN",
@@ -18,8 +19,7 @@
     "gotopreset":"true",
     "reboot":"true",
     "setimagesettings":"true"
-}
-{
+},{
     "Brand": "AUTRE",
     "Model": "AUTRE",
     "gethost": "true",
@@ -40,4 +40,5 @@
     "reboot":"true",
     "setimagesettings":"true"
 }
+]
 // GOTOHOME DEPEND OF HOME SUPPORTED GETNODES
