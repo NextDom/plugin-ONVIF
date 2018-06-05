@@ -1,10 +1,6 @@
 # Idées pour de futures releases
 
-~~chapitre à garder seulement pour les idées sur lesquelles aucun développement n'est prévu actuellement~~
-
-# Prochaine release
-
-~~chapitre à garder seulement si une version développement est en cours~~
+Ajout des commandes supportés dans le futur par le projet [ONVIF](https://github.com/agsh/onvif)
 
 # Changelog
 
@@ -17,11 +13,9 @@
 * Modification 1
 * Modification 2
 
-### Version 1.1.0:  (**_date_**)
+### Version 1.0.0:  (**_date_**)
 
-* Modification 1
-* Modification 2
-* Modification 3
+* Création du plugin, première release
 
 ### Détail des changements
 
@@ -32,4 +26,4 @@ Détail complet des mises à jour sur [Historique Commit](https://github.com/Nex
 En cas de problèmes avec ce plugin il est possible d'ouvrir un ticket pour demander une correction :
 
 [https://github.com/NextDom/plugin-ONVIF/issues](https://github.com/NextDom/plugin-ONVIF/issues)
-~~Remplacer le lien vers le bugtracker du plugin~~
+
