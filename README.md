@@ -30,6 +30,8 @@ Dependances requises:
   * Contraste
   * Saturation
   * Netteté
+* AbsoluteMove
+* Reboot : Redémare la caméra 5 secondes après la requête
 
 ## Infos supportées dans Jeedom:
 
