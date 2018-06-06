@@ -24,12 +24,6 @@ class HostONVIF
     private $_Yspeedmax;
     private $_Zspeedmin;
     private $_Zspeedmax;
-    private $_XAbsSpeedMin;
-    private $_XAbsSpeedMax;
-    private $_YAbsSpeedMin;
-    private $_YAbsSpeedMax;
-    private $_ZAbsSpeedMin;
-    private $_ZAbsSpeedMax;
 
 
 // LISTE DES GETTERS
@@ -118,7 +112,7 @@ class HostONVIF
     {
         return $this->_Zspeedmax;
     }
-    
+
     public function getXAbsSpeedMin()
     {
         return $this->_XabsSpeedMin;
@@ -148,6 +142,7 @@ class HostONVIF
     {
         return $this->_ZabsSpeedMax;
     }
+
 // LISTE DES SETTERS
     public function setUsername($Username)
     {
@@ -274,7 +269,7 @@ class HostONVIF
     }
     
     
-    public function setXAbsSpeedMax($AbsZSpeed)
+    public function setZAbsSpeedMax($AbsZSpeed)
     {
         $this->_ZabsSpeedMax = $AbsZSpeed;
     }
@@ -296,16 +291,15 @@ class HostONVIF
         global $disabled_funcs;
         if (isset($disabled_funcs[$name]))
             unset ($disabled_funcs[$name]);
-    }      
-    
-    
+    } 
+
     public function hydrate(array $donnees)
 
     {
 
         foreach ($donnees as $key => $value)
 
-        {
+            {
             // On récupère le nom du setter correspondant à l'attribut.
 
             $method = 'set'.ucfirst($key);
@@ -348,7 +342,17 @@ class HostONVIF
     
     }
 
+    /*
+    NE FONCTIONNE PAS SUITE A UN BUG DU PROJET
 
+    public function getcamera()
+    {
+       $commande = "node getcam.js";  
+       $camerasdiscovery = shell_exec($commande);
+       
+       print_r($camerasdiscovery);
+    }
+    */
     public function gethost()
     {
         //THIS COMMAND GIVE TO $name THE NAME OF THE CAM
@@ -528,14 +532,22 @@ class HostONVIF
         $this -> json_validate($node);
 
         // SI LE FICHIER EST VALIDE ALORS
-        //print_r($node);
+        // print_r($node);
 
 
         $nodejson = json_decode($node, true);
 
 
         // NODES VALUES
-
+        $XRangeMax = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['XRange']['max'];
+        $XRangeMin = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['XRange']['min'];
+        $YRangeMax = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['YRange']['max'];
+        $YRangeMin = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['YRange']['min'];
+        $ZRangeMax = $nodejson['nodes']['000']['supportedPTZSpaces']['absoluteZoomPositionSpace']['XRange']['max'];
+        $ZRangeMin = $nodejson['nodes']['000']['supportedPTZSpaces']['absoluteZoomPositionSpace']['XRange']['max'];
+        $PresetMax = $nodejson['nodes']['000']['maximumNumberOfPresets'];
+        $HomeSupport = $nodejson['nodes']['000']['homeSupported'];
+        $PatrolMax = $nodejson['nodes']['000']['extension']['supportedPresetTour']['maximumNumberOfPresetTours'];
         $PanspeedMin = $nodejson['nodes']['000']['supportedPTZSpaces']['panTiltSpeedSpace']['XRange']['min'];
         $PanspeedMax = $nodejson['nodes']['000']['supportedPTZSpaces']['panTiltSpeedSpace']['XRange']['max'];
         $ZoomspeedMin = $nodejson['nodes']['000']['supportedPTZSpaces']['zoomSpeedSpace']['XRange']['min'];
@@ -546,15 +558,6 @@ class HostONVIF
         $YContinuousspeedmax =  $nodejson['nodes']['000']['supportedPTZSpaces']['continuousPanTiltVelocitySpace']['YRange']['max'];
         $ZContinuousspeedmin = $nodejson['nodes']['000']['supportedPTZSpaces']['continuousZoomVelocitySpace']['XRange']['min']; 
         $ZContinuousspeedmax =  $nodejson['nodes']['000']['supportedPTZSpaces']['continuousZoomVelocitySpace']['XRange']['max'];
-        $XRangeMax = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['XRange']['max'];
-        $XRangeMin = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['XRange']['min'];
-        $YRangeMax = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['YRange']['max'];
-        $YRangeMin = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['YRange']['min'];
-        $ZRangeMax = $nodejson['nodes']['000']['supportedPTZSpaces']['absoluteZoomPositionSpace']['XRange']['max'];
-        $ZRangeMin = $nodejson['nodes']['000']['supportedPTZSpaces']['absoluteZoomPositionSpace']['XRange']['max'];
-        $PresetMax = $nodejson['nodes']['000']['maximumNumberOfPresets'];
-        $HomeSupport = $nodejson['nodes']['000']['homeSupported'];
-        $PatrolMax = $nodejson['nodes']['000']['extension']['supportedPresetTour']['maximumNumberOfPresetTours'];
 
         // PUT VALUES TO PRIVATE
         $this -> setXmin($XrangeMin);
@@ -577,6 +580,16 @@ class HostONVIF
         echo "Nombre Max de Patrouille ",$PatrolMax,"\n";
         echo "Home Support ",$HomeSupport,"\n";
         echo "\n";
+        echo $PanspeedMin,"\n";
+        echo $PanspeedMax,"\n";
+        echo $ZoomspeedMin,"\n";
+        echo $ZoomspeedMax,"\n";
+        echo $XContinuousspeedmin,"\n";
+        echo $XContinuousspeedmax,"\n";
+        echo $YContinuousspeedmin,"\n";
+        echo $YContinuousspeedmax,"\n";
+        echo $ZContinuousspeedmin,"\n";
+        echo $ZContinuousspeedmax,"\n";
         */
     }
 
@@ -679,7 +692,7 @@ class HostONVIF
         $Password = $this->_Password;
         $Username = $this->_Username;
 
-        $commande = "node getstatus.js  --Username=";
+        $commande = "node getStatus.js  --Username=";
         $commande .= $Username;
         $commande .= " --Password=";
         $commande .= $Password;
@@ -698,7 +711,7 @@ class HostONVIF
         $this -> json_validate($statuscam);
 
         // SI LE FICHIER EST VALIDE ALORS
-        //print_r($info);
+        print_r($statuscam);
 
 
         $statuscamjson = json_decode($statuscam, true);
@@ -750,7 +763,7 @@ class HostONVIF
         $this -> json_validate($profile);
 
         // SI LE FICHIER EST VALIDE ALORS
-        //print_r($info);
+        print_r($profile);
 
 
         $profilejson = json_decode($profile, true);
@@ -884,7 +897,7 @@ class HostONVIF
     }
 
 
-    public function intervalZ($variable)
+        public function intervalZ($variable)
     {
         $Zminimum = $this -> getZmin();
         $Zmaximum = $this -> getZmax();
@@ -904,65 +917,6 @@ class HostONVIF
         }
     }
 
-    public function IntervalAbsoluteSpeedX($variable)
-    {
-        $Xabsspeedminimum = $this -> getXAbsSpeedMin();
-        $Xabsspeedmaximum = $this -> getXAbsSpeedMin();
-
-        if (gettype($variable) == integer || gettype($variable) == double)
-        {
-            if (abs($variable) < abs($Xabsspeedminimum) && $variable<=$Xabsspeedmaximum)
-            {
-                // Aucun Probleme
-            }
-            else $variable = 1;
-        }
-        else
-        {
-            settype($variable , integer);
-            $variable = 1;
-        }
-    }
-    
-    public function IntervalAbsoluteSpeedY($variable)
-    {
-        $Yabsspeedminimum = $this -> getYAbsSpeedMin();
-        $Yabsspeedmaximum = $this -> getYAbsSpeedMin();
-
-        if (gettype($variable) == integer || gettype($variable) == double)
-        {
-            if (abs($variable) < abs($Yabsspeedminimum) && $variable<=$Yabsspeedmaximum)
-            {
-                // Aucun Probleme
-            }
-            else $variable = 1;
-        }
-        else
-        {
-            settype($variable , integer);
-            $variable = 1;
-        }
-    }
-    
-    public function IntervalAbsoluteSpeedZ($variable)
-    {
-        $Zabsspeedminimum = $this -> getZAbsSpeedMin();
-        $Zabsspeedmaximum = $this -> getZAbsSpeedMin();
-
-        if (gettype($variable) == integer || gettype($variable) == double)
-        {
-            if (abs($variable) < abs($Zabsspeedminimum) && $variable<=$Zabsspeedmaximum)
-            {
-                // Aucun Probleme
-            }
-            else $variable = 1;
-        }
-        else
-        {
-            settype($variable , integer);
-            $variable = 1;
-        }
-    }
 
         public function gotohome($Xspeed,$Yspeed,$Zspeed)
     {
