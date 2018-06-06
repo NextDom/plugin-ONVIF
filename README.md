@@ -10,7 +10,7 @@ plugin-ONVIF
 
 Ce plugin permet de controler les caméras supportant le protocole ONVIF. 
 
-Dependances requise:
+Dependances requises:
 
 `npm install onvif`
 
@@ -23,6 +23,8 @@ COMMANDES
 Les infos remontées dans Jeedom:
 
 INFO
+# FORUM
+[Forum Nextdom](https://www.nextdom.org/plugin-onvif/plugin-onvif)
 
 # TO DO
 Les commandes a inclure sont ici :
