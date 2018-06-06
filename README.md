@@ -16,11 +16,16 @@ Dependances requises:
 
 `npm install minimist`
 
-Les commandes supportées:
+# Les commandes supportées:
 
-COMMANDES
+## Actions supportées dans Jeedom:
 
-Les infos remontées dans Jeedom:
+* GoToHome : Permet d'aller à la position par défaut de la caméra, cette position est modifiable.
+* GoToPreset : Permet à la caméra d'aller à une position prédéfini sous la forme de preset PTZ par l'utilisateur.
+* RelativeMove : Permet à la caméra d'effectuer un mouvement relatif par rapport à la position initiale.
+* SetPreset : Créer un preset 
+
+## Infos supportées dans Jeedom:
 
 INFO
 # FORUM
