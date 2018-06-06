@@ -23,7 +23,13 @@ Dependances requises:
 * GoToHome : Permet d'aller à la position par défaut de la caméra, cette position est modifiable.
 * GoToPreset : Permet à la caméra d'aller à une position prédéfini sous la forme de preset PTZ par l'utilisateur.
 * RelativeMove : Permet à la caméra d'effectuer un mouvement relatif par rapport à la position initiale.
-* SetPreset : Créer un preset 
+* SetPreset : Créer un preset au niveau de la position actuelle de la caméra, ce preset peut être appelé avec la fonction GoToPreset.
+* RemovePreset : Supprime un preset enregistré sur la caméra.
+* SetImageSettings : Permet de controler les paramètres de l'image a travers quatres fonctions:
+** Luminosité
+** Contraste
+** Saturation
+** Netteté
 
 ## Infos supportées dans Jeedom:
 
