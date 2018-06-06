@@ -26,10 +26,10 @@ Dependances requises:
 * SetPreset : Créer un preset au niveau de la position actuelle de la caméra, ce preset peut être appelé avec la fonction GoToPreset.
 * RemovePreset : Supprime un preset enregistré sur la caméra.
 * SetImageSettings : Permet de controler les paramètres de l'image a travers quatres fonctions:
-** Luminosité
-** Contraste
-** Saturation
-** Netteté
+  * Luminosité
+  * Contraste
+  * Saturation
+  * Netteté
 
 ## Infos supportées dans Jeedom:
 
