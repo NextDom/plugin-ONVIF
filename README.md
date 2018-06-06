@@ -30,12 +30,24 @@ Dependances requises:
   * Contraste
   * Saturation
   * Netteté
-* AbsoluteMove
+* AbsoluteMove : Déplace la caméra à des coordonnées fixés.
 * Reboot : Redémare la caméra 5 secondes après la requête
 
 ## Infos supportées dans Jeedom:
 
-INFO
+* GetPreset 
+* GetScope
+* GetStatus
+* GetDate
+* GetDeviceInfo
+* GetHost
+* GetImageSettings
+* GetNodes 
+* GetProfile
+* GetReplayURL
+* GetStreamURL
+* GetSnapshotURL
+
 # FORUM
 [Forum Nextdom](https://www.nextdom.org/plugin-onvif/plugin-onvif)
 
