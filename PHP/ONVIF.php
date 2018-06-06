@@ -24,6 +24,12 @@ class HostONVIF
     private $_Yspeedmax;
     private $_Zspeedmin;
     private $_Zspeedmax;
+    private $_XAbsSpeedMin;
+    private $_XAbsSpeedMax;
+    private $_YAbsSpeedMin;
+    private $_YAbsSpeedMax;
+    private $_ZAbsSpeedMin;
+    private $_ZAbsSpeedMax;
 
 
 // LISTE DES GETTERS
@@ -112,7 +118,36 @@ class HostONVIF
     {
         return $this->_Zspeedmax;
     }
+    
+    public function getXAbsSpeedMin()
+    {
+        return $this->_XabsSpeedMin;
+    }
+    
+    public function getXAbsSpeedMax()
+    {
+        return $this->_XAbsSpeedMax;
+    }
+    
+    public function getYAbsSpeedMin()
+    {
+        return $this->_YabsSpeedMin;
+    }
+    
+    public function getYAbsSpeedMax()
+    {
+        return $this->_YAbsSpeedMax;
+    } 
 
+    public function getZAbsSpeedMin()
+    {
+        return $this->_ZabsSpeedMin;
+    }
+    
+    public function getZAbsSpeedMax()
+    {
+        return $this->_ZabsSpeedMax;
+    }
 // LISTE DES SETTERS
     public function setUsername($Username)
     {
@@ -211,6 +246,38 @@ class HostONVIF
       $this->_Zspeedmax = $ZSPEEDMAX;
     }
     
+    public function setXAbsSpeedMin($AbsXSpeed)
+    {
+        $this->_XabsSpeedMin = $AbsXSpeed;
+    }
+    
+    
+    public function setXAbsSpeedMax($AbsXSpeed)
+    {
+        $this->_XabsSpeedMax = $AbsXSpeed;
+    }
+    
+    public function setYAbsSpeedMin($AbsYSpeed)
+    {
+        $this->_YabsSpeedMin = $AbsYSpeed;
+    }
+    
+    
+    public function setYAbsSpeedMax($AbsYSpeed)
+    {
+        $this->_YabsSpeedMax = $AbsYSpeed;
+    }
+    
+    public function setZAbsSpeedMin($AbsZSpeed)
+    {
+        $this->_ZabsSpeedMin = $AbsZSpeed;
+    }
+    
+    
+    public function setXAbsSpeedMax($AbsZSpeed)
+    {
+        $this->_ZabsSpeedMax = $AbsZSpeed;
+    }
     
     public function _func() {
         global $disabled_funcs;
@@ -806,7 +873,7 @@ class HostONVIF
     }
 
 
-        public function intervalZ($variable)
+    public function intervalZ($variable)
     {
         $Zminimum = $this -> getZmin();
         $Zmaximum = $this -> getZmax();
@@ -826,6 +893,65 @@ class HostONVIF
         }
     }
 
+    public function IntervalAbsoluteSpeedX($variable)
+    {
+        $Xabsspeedminimum = $this -> getXAbsSpeedMin();
+        $Xabsspeedmaximum = $this -> getXAbsSpeedMin();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if (abs($variable) < abs($Xabsspeedminimum) && $variable<=$Xabsspeedmaximum)
+            {
+                // Aucun Probleme
+            }
+            else $variable = 1;
+        }
+        else
+        {
+            settype($variable , integer);
+            $variable = 1;
+        }
+    }
+    
+    public function IntervalAbsoluteSpeedY($variable)
+    {
+        $Yabsspeedminimum = $this -> getYAbsSpeedMin();
+        $Yabsspeedmaximum = $this -> getYAbsSpeedMin();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if (abs($variable) < abs($Yabsspeedminimum) && $variable<=$Yabsspeedmaximum)
+            {
+                // Aucun Probleme
+            }
+            else $variable = 1;
+        }
+        else
+        {
+            settype($variable , integer);
+            $variable = 1;
+        }
+    }
+    
+    public function IntervalAbsoluteSpeedZ($variable)
+    {
+        $Zabsspeedminimum = $this -> getZAbsSpeedMin();
+        $Zabsspeedmaximum = $this -> getZAbsSpeedMin();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if (abs($variable) < abs($Zabsspeedminimum) && $variable<=$Zabsspeedmaximum)
+            {
+                // Aucun Probleme
+            }
+            else $variable = 1;
+        }
+        else
+        {
+            settype($variable , integer);
+            $variable = 1;
+        }
+    }
 
         public function gotohome($Xspeed,$Yspeed,$Zspeed)
     {
