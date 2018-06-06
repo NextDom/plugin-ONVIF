@@ -211,13 +211,34 @@ class HostONVIF
       $this->_Zspeedmax = $ZSPEEDMAX;
     }
     
+    
+    public function _func() {
+        global $disabled_funcs;
+        $func = substr (__FUNCTION__,1);
+        if (isset ($disabled_funcs[$func]))
+            throw new Exception ("Function $func is disabled.");
+            return call_user_func_array ($func,func_get_args());
+    }
+    
+    public function disable_func ($name) {
+        global $disabled_funcs;
+        $disabled_funcs["name"] = 1;
+    }
+    
+    public function enable_func ($name) {
+        global $disabled_funcs;
+        if (isset($disabled_funcs[$name]))
+            unset ($disabled_funcs[$name]);
+    }      
+    
+    
     public function hydrate(array $donnees)
 
     {
 
         foreach ($donnees as $key => $value)
 
-            {
+        {
             // On récupère le nom du setter correspondant à l'attribut.
 
             $method = 'set'.ucfirst($key);
