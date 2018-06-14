@@ -51,10 +51,6 @@ Dependances requises:
 # FORUM
 [Forum Nextdom](https://www.nextdom.org/plugin-onvif/plugin-onvif)
 
-# TO DO
-Les commandes a inclure sont ici :
-[FORUM](https://www.jeedom.com/forum/viewtopic.php?f=134&t=37495)
-
 # Documentation du plugin:
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](docs/fr_FR/presentation.md)
 [présentation](docs/fr_FR/presentation.md) [configuration](docs/fr_FR/configuration.md) [faq](docs/fr_FR/faq.md) [changelog](docs/fr_FR/changelog.md)
