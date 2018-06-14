@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../../../../core/php/core.inc.php';
 
 class HostONVIF
@@ -24,9 +23,19 @@ class HostONVIF
     private $_Yspeedmax;
     private $_Zspeedmin;
     private $_Zspeedmax;
+    private $_ZoomSpeedMin;
+    private $_ZoomSpeedMax;
+    private $_PanTiltSpeedMin;
+    private $_PanTiltSpeedMax;
 
 
-// LISTE DES GETTERS
+/**********************************************/
+/*                                            */
+/*-------------LISTE DES GETTERS--------------*/
+/*                                            */
+/**********************************************/
+
+
     public function __get($att)
     {
          echo "Get:$att";
@@ -113,37 +122,35 @@ class HostONVIF
         return $this->_Zspeedmax;
     }
 
-    public function getXAbsSpeedMin()
+    public function getPanTiltSpeedMin()
     {
-        return $this->_XabsSpeedMin;
+        return $this->_PanTiltSpeedMin;
     }
     
-    public function getXAbsSpeedMax()
+    public function getPanTiltSpeedMax()
     {
-        return $this->_XAbsSpeedMax;
-    }
-    
-    public function getYAbsSpeedMin()
-    {
-        return $this->_YabsSpeedMin;
-    }
-    
-    public function getYAbsSpeedMax()
-    {
-        return $this->_YAbsSpeedMax;
-    } 
-
-    public function getZAbsSpeedMin()
-    {
-        return $this->_ZabsSpeedMin;
-    }
-    
-    public function getZAbsSpeedMax()
-    {
-        return $this->_ZabsSpeedMax;
+        return $this->_PanTiltSpeedMax;
     }
 
-// LISTE DES SETTERS
+    public function getZoomSpeedMin()
+    {
+        return $this->_ZoomSpeedMin;
+    }
+    
+    public function getZoomSpeedMax()
+    {
+        return $this->_ZoomSpeedMax;
+    }
+
+
+
+/**********************************************/
+/*                                            */
+/*-------------LISTE DES SETTERS--------------*/
+/*                                            */
+/**********************************************/
+
+
     public function setUsername($Username)
     {
       $this->_Username = $Username;
@@ -241,58 +248,35 @@ class HostONVIF
       $this->_Zspeedmax = $ZSPEEDMAX;
     }
     
-    public function setXAbsSpeedMin($AbsXSpeed)
+    public function setPanTiltSpeedMin($AbsXSpeed)
     {
-        $this->_XabsSpeedMin = $AbsXSpeed;
+        $this->_PanTiltSpeedMin = $AbsXSpeed;
     }
     
     
-    public function setXAbsSpeedMax($AbsXSpeed)
+    public function setPanTiltSpeedMax($AbsXSpeed)
     {
-        $this->_XabsSpeedMax = $AbsXSpeed;
+        $this->_PanTiltSpeedMax = $AbsXSpeed;
     }
     
-    public function setYAbsSpeedMin($AbsYSpeed)
+    public function setZoomSpeedMin($AbsZSpeed)
     {
-        $this->_YabsSpeedMin = $AbsYSpeed;
+        $this->_ZoomSpeedMin = $AbsZSpeed;
     }
     
     
-    public function setYAbsSpeedMax($AbsYSpeed)
+    public function setZoomSpeedMax($AbsZSpeed)
     {
-        $this->_YabsSpeedMax = $AbsYSpeed;
+        $this->_ZoomSpeedMax = $AbsZSpeed;
     }
-    
-    public function setZAbsSpeedMin($AbsZSpeed)
-    {
-        $this->_ZabsSpeedMin = $AbsZSpeed;
-    }
-    
-    
-    public function setZAbsSpeedMax($AbsZSpeed)
-    {
-        $this->_ZabsSpeedMax = $AbsZSpeed;
-    }
-    
-    public function _func() {
-        global $disabled_funcs;
-        $func = substr (__FUNCTION__,1);
-        if (isset ($disabled_funcs[$func]))
-            throw new Exception ("Function $func is disabled.");
-            return call_user_func_array ($func,func_get_args());
-    }
-    
-    public function disable_func ($name) {
-        global $disabled_funcs;
-        $disabled_funcs["name"] = 1;
-    }
-    
-    public function enable_func ($name) {
-        global $disabled_funcs;
-        if (isset($disabled_funcs[$name]))
-            unset ($disabled_funcs[$name]);
-    } 
+/**********************************************/
+/*                                            */
+/*-------------LISTE DES FONCTIONS------------*/
+/*                                            */
+/**********************************************/
 
+
+// Importe les donnees d'authentification de Jeedom
     public function hydrate(array $donnees)
 
     {
@@ -317,8 +301,8 @@ class HostONVIF
             } 
     }
     
-
-    public function json_validate($_test)
+// Valide les fichiers JSON renvoyés par les JavaScript
+        public function json_validate($_test)
     {
     // Decode pour test erreur
     $result = json_decode($_test);
@@ -335,15 +319,21 @@ class HostONVIF
     $_test2 = json_decode($_test);
     if ($_test2 =='null' || $_test2 =='')
     {
-    throw new Exception('Fichier Vide');
+        throw new Exception('Fichier Vide');
     }
 
     echo "Aucune erreur \n";  
     
     }
 
+/**********************************************/
+/*                                            */
+/*-----------------INTERVALES-----------------*/
+/*                                            */
+/**********************************************/
+
     /*
-    NE FONCTIONNE PAS SUITE A UN BUG DU PROJET
+    NE FONCTIONNE PAS SUITE A UN BUG SUR LE PROJET ONVIF
 
     public function getcamera()
     {
@@ -353,7 +343,197 @@ class HostONVIF
        print_r($camerasdiscovery);
     }
     */
-    public function gethost()
+
+        public function intervalX($variable)
+    {
+        $Xminimum = $this -> getXmin();
+        $Xmaximum = $this -> getXmax();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if ($variable >= $Xminimum && $variable<=$Xmaximum)
+            {
+                // Aucun Probleme
+            }
+            else 
+            {
+                throw new Exception ('Les valeurs entrées n\'entre pas dans l\'interval des valeurs acceptées par la caméra');
+            }
+        }   
+        else
+        {
+            throw new Exception ('Les valeurs entrées ne sont pas des nombres');
+        }
+    }
+
+
+        public function intervalY($variable)
+    {
+        $Yminimum = $this -> getYmin();
+        $Ymaximum = $this -> getYmax();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if ($variable >= $Yminimum && $variable<=$Ymaximum)
+            {
+                // Aucun Probleme
+            }
+            else 
+            {
+                throw new Exception ('Les valeurs entrées n\'entre pas dans l\'interval des valeurs acceptées par la caméra');
+            }
+        }   
+        else
+        {
+            throw new Exception ('Les valeurs entrées ne sont pas des nombres');
+        }
+    }
+
+
+        public function intervalZ($variable)
+    {
+        $Zminimum = $this -> getZmin();
+        $Zmaximum = $this -> getZmax();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if ($variable >= $Zminimum && $variable<=$Zmaximum)
+            {
+                // Aucun Probleme
+            }
+            else 
+            {
+                throw new Exception ('Les valeurs entrées n\'entre pas dans l\'interval des valeurs acceptées par la caméra');
+            }
+        }   
+        else
+        {
+            throw new Exception ('Les valeurs entrées ne sont pas des nombres');
+        }
+    }
+
+
+        public function intervalPanTiltSpeed($variable)
+    {
+        $minimum = $this -> getPanTiltSpeedMin();
+        $maximum = $this -> getPanTiltSpeedMax();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if ($variable >= $minimum && $variable<=$maximum)
+            {
+                // Aucun Probleme
+            }
+            else 
+            {
+                throw new Exception ('Les valeurs entrées n\'entre pas dans l\'interval des valeurs acceptées par la caméra');
+            }
+        }   
+        else
+        {
+            throw new Exception ('Les valeurs entrées ne sont pas des nombres');
+        }
+    }
+
+
+        public function intervalZoomSpeed($variable)
+    {
+        $minimum = $this -> getZoomSpeedMin();
+        $maximum = $this -> getZoomSpeedMax();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if ($variable >= $minimum && $variable<=$maximum)
+            {
+                // Aucun Probleme
+            }
+            else 
+            {
+                throw new Exception ('Les valeurs entrées n\'entre pas dans l\'interval des valeurs acceptées par la caméra');
+            }
+        }   
+        else
+        {
+            throw new Exception ('Les valeurs entrées ne sont pas des nombres');
+        }
+    }
+
+
+        public function intervalXcontinuousSpeed($variable)
+    {
+        $minimum = $this -> getXspeedmin();
+        $maximum = $this -> getXspeedmax();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if ($variable >= $minimum && $variable<=$maximum)
+            {
+                // Aucun Probleme
+            }
+            else 
+            {
+                throw new Exception ('Les valeurs entrées n\'entre pas dans l\'interval des valeurs acceptées par la caméra');
+            }
+        }   
+        else
+        {
+            throw new Exception ('Les valeurs entrées ne sont pas des nombres');
+        }
+    }
+
+
+        public function intervalYcontinuousSpeed($variable)
+    {
+        $minimum = $this -> getYspeedmin();
+        $maximum = $this -> getYspeedmax();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if ($variable >= $minimum && $variable<=$maximum)
+            {
+                // Aucun Probleme
+            }
+            else 
+            {
+                throw new Exception ('Les valeurs entrées n\'entre pas dans l\'interval des valeurs acceptées par la caméra');
+            }
+        }   
+        else
+        {
+            throw new Exception ('Les valeurs entrées ne sont pas des nombres');
+        }
+    }
+
+
+        public function intervalZcontinuousSpeed($variable)
+    {
+        $minimum = $this -> getZspeedmin();
+        $maximum = $this -> getZspeedmax();
+
+        if (gettype($variable) == integer || gettype($variable) == double)
+        {
+            if ($variable >= $minimum && $variable<=$maximum)
+            {
+                // Aucun Probleme
+            }
+            else 
+            {
+                throw new Exception ('Les valeurs entrées n\'entre pas dans l\'interval des valeurs acceptées par la caméra');
+            }
+        }   
+        else
+        {
+            throw new Exception ('Les valeurs entrées ne sont pas des nombres');
+        }
+    }
+
+
+/**********************************************/
+/*                                            */
+/*---------------LISTE DES INFOS--------------*/
+/*                                            */
+/**********************************************/
+        public function gethost()
     {
         //THIS COMMAND GIVE TO $name THE NAME OF THE CAM
 
@@ -400,7 +580,7 @@ class HostONVIF
               
     }
 
-    public function getdeviceinfo()
+        public function getdeviceinfo()
     {
 
         $Port     = $this->_Port;
@@ -544,7 +724,7 @@ class HostONVIF
         $YRangeMax = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['YRange']['max'];
         $YRangeMin = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['YRange']['min'];
         $ZRangeMax = $nodejson['nodes']['000']['supportedPTZSpaces']['absoluteZoomPositionSpace']['XRange']['max'];
-        $ZRangeMin = $nodejson['nodes']['000']['supportedPTZSpaces']['absoluteZoomPositionSpace']['XRange']['max'];
+        $ZRangeMin = $nodejson['nodes']['000']['supportedPTZSpaces']['absoluteZoomPositionSpace']['XRange']['min'];
         $PresetMax = $nodejson['nodes']['000']['maximumNumberOfPresets'];
         $HomeSupport = $nodejson['nodes']['000']['homeSupported'];
         $PatrolMax = $nodejson['nodes']['000']['extension']['supportedPresetTour']['maximumNumberOfPresetTours'];
@@ -559,13 +739,26 @@ class HostONVIF
         $ZContinuousspeedmin = $nodejson['nodes']['000']['supportedPTZSpaces']['continuousZoomVelocitySpace']['XRange']['min']; 
         $ZContinuousspeedmax =  $nodejson['nodes']['000']['supportedPTZSpaces']['continuousZoomVelocitySpace']['XRange']['max'];
 
-        // PUT VALUES TO PRIVATE
-        $this -> setXmin($XrangeMin);
+
+
+        // PUT VALUES TO PRIVATE VARIABLES
+        $this -> setXmin($XRangeMin);
         $this -> setXmax($XRangeMax);
-        $this -> setYmin($YrangeMin);
+        $this -> setYmin($YRangeMin);
         $this -> setYmax($YRangeMax);
-        $this -> setZmin($ZrangeMin);
-        $this -> setZmax($ZRangeMax);        
+        $this -> setZmin($ZRangeMin);
+        $this -> setZmax($ZRangeMax);
+        $this -> setXspeedmin($XContinuousspeedmin);
+        $this -> setXspeedmax($XContinuousspeedmax);        
+        $this -> setYspeedmin($YContinuousspeedmin);
+        $this -> setYspeedmax($YContinuousspeedmax);
+        $this -> setZspeedmin($ZContinuousspeedmin);
+        $this -> setZspeedmax($ZContinuousspeedmax);
+        $this -> setZoomSpeedMin($ZoomspeedMin);
+        $this -> setZoomSpeedMax($ZoomspeedMax);
+        $this -> setPanTiltSpeedMin($PanspeedMin);
+        $this -> setPanTiltSpeedMax($PanspeedMax);
+        
 
         // DISPLAY NODES VALUES
         /*
@@ -580,16 +773,16 @@ class HostONVIF
         echo "Nombre Max de Patrouille ",$PatrolMax,"\n";
         echo "Home Support ",$HomeSupport,"\n";
         echo "\n";
-        echo $PanspeedMin,"\n";
-        echo $PanspeedMax,"\n";
-        echo $ZoomspeedMin,"\n";
-        echo $ZoomspeedMax,"\n";
-        echo $XContinuousspeedmin,"\n";
-        echo $XContinuousspeedmax,"\n";
-        echo $YContinuousspeedmin,"\n";
-        echo $YContinuousspeedmax,"\n";
-        echo $ZContinuousspeedmin,"\n";
-        echo $ZContinuousspeedmax,"\n";
+        echo "Pan Speed Min ",$PanspeedMin,"\n";
+        echo "Pan Speed Max ",$PanspeedMax,"\n";
+        echo "Zoom Speed Min ",$ZoomspeedMin,"\n";
+        echo "Zoom Speed Max ",$ZoomspeedMax,"\n";
+        echo "X continuous speed min ",$XContinuousspeedmin,"\n";
+        echo "X continuous speed max ",$XContinuousspeedmax,"\n";
+        echo "Y continuous speed min ",$YContinuousspeedmin,"\n";
+        echo "Y continuous speed max ",$YContinuousspeedmax,"\n";
+        echo "Z continuous speed min ",$ZContinuousspeedmin,"\n";
+        echo "Z continuous speed max ",$ZContinuousspeedmax,"\n";
         */
     }
 
@@ -763,7 +956,7 @@ class HostONVIF
         $this -> json_validate($profile);
 
         // SI LE FICHIER EST VALIDE ALORS
-        print_r($profile);
+        //print_r($profile);
 
 
         $profilejson = json_decode($profile, true);
@@ -837,86 +1030,27 @@ class HostONVIF
         echo "\n";
         */
     } 
-        public function interval($variable)
+
+        public function refresh()
     {
-        if (gettype($variable) == integer || gettype($variable) == double)
-        {
-            if (0 < $variable && $variable<=1)
-            {
-                // Aucun Probleme
-            }
-            else $variable = 1;
-        }
-        else
-        {
-            settype($variable , integer);
-            $variable = 1;
-        }
+
+        $this -> getdeviceinfo();
+        $this -> gethost();
+        $this -> getprofile();
+        $this -> getsnap();
+        $this -> getnodes();
+        $this -> getimage();
+        $this -> getstream();
+        $this -> getpresets();
+        $this -> getnodes();
     }
 
 
-        public function intervalX($variable)
-    {
-        $Xminimum = $this -> getXmin();
-        $Xmaximum = $this -> getXmax();
-
-        if (gettype($variable) == integer || gettype($variable) == double)
-        {
-            if (abs($variable) < abs($Xminimum) && $variable<=$Xmaximum)
-            {
-                // Aucun Probleme
-            }
-            else $variable = 0;
-        }
-        else
-        {
-            settype($variable , integer);
-            $variable = 0;
-        }
-    }
-
-
-        public function intervalY($variable)
-    {
-        $Yminimum = $this -> getYmin();
-        $Ymaximum = $this -> getYmax();
-
-        if (gettype($variable) == integer || gettype($variable) == double)
-        {
-            if (abs($variable) < abs($Yminimum) && $variable<=$Ymaximum)
-            {
-                // Aucun Probleme
-            }
-            else $variable = 0;
-        }
-        else
-        {
-            settype($variable , integer);
-            $variable = 0;
-        }
-    }
-
-
-        public function intervalZ($variable)
-    {
-        $Zminimum = $this -> getZmin();
-        $Zmaximum = $this -> getZmax();
-
-        if (gettype($variable) == integer || gettype($variable) == double)
-        {
-            if (abs($variable) < abs($Zminimum) && $variable<=$Zmaximum)
-            {
-                // Aucun Probleme
-            }
-            else $variable = 0;
-        }
-        else
-        {
-            settype($variable , integer);
-            $variable = 0;
-        }
-    }
-
+/**********************************************/
+/*                                            */
+/*--------------LISTE DES ACTIONS-------------*/
+/*                                            */
+/**********************************************/
 
         public function gotohome($Xspeed,$Yspeed,$Zspeed)
     {
@@ -926,9 +1060,9 @@ class HostONVIF
         $Password = $this->_Password;
         $Username = $this->_Username;
 
-        $this -> interval($Xspeed);
-        $this -> interval($Yspeed);
-        $this -> interval($Zspeed);
+        $this -> intervalPanTiltSpeed($Xspeed);
+        $this -> intervalPanTiltSpeed($Yspeed);
+        $this -> intervalZoomSpeed($Zspeed);
 
         $commande = "node gotohome.js  --Username=";
         $commande .= $Username;
@@ -960,13 +1094,9 @@ class HostONVIF
         $Password = $this->_Password;
         $Username = $this->_Username;
 
-        $this -> intervalX($X);
-        $this -> intervalY($Y);
-        $this -> intervalZ($Z);
-
-        $this -> interval($Xspeed);
-        $this -> interval($Yspeed);
-        $this -> interval($Zspeed);
+        $this -> intervalXcontinuousSpeed($Xspeed);
+        $this -> intervalYcontinuousSpeed($Yspeed);
+        $this -> intervalZcontinuousSpeed($Zspeed);
 
         $commande = "node relativemove.js  --Username=";
         $commande .= $Username;
@@ -1079,7 +1209,7 @@ class HostONVIF
         // echo $gotopreset;
     } 
 
-    public function reboot()
+        public function reboot()
     {
 
         $Port     = $this->_Port;
@@ -1103,13 +1233,45 @@ class HostONVIF
         // echo $reboot;
     }
 
-    public function setimagesettings($brightness,$colorsaturation,$contrast,$sharpness)
+        public function setimagesettings($brightness,$colorsaturation,$contrast,$sharpness)
     {
 
         $Port     = $this->_Port;
         $IPadress = $this->_IPadress;
         $Password = $this->_Password;
         $Username = $this->_Username;
+
+        $commande2 = "node getimage.js  --Username=";
+        $commande2 .= $Username;
+        $commande2 .= " --Password=";
+        $commande2 .= $Password;
+        $commande2 .= " --IPadress=";
+        $commande2 .= $IPadress;
+        $commande2 .= " --Port=";
+        $commande2 .= $Port;
+
+        //Display final shell command
+        //echo $commande,"\n";
+
+        $image1 = shell_exec($commande2);
+        
+
+        // TEST DE LA VALIDITE DE LA SORTIE DU SCRIPT
+        $this -> json_validate($image1);
+
+        // SI LE FICHIER EST VALIDE ALORS
+        //print_r($image1);
+
+        
+        $image1json = json_decode($image1, true);
+
+
+        // IMAGE SETTINGS
+        $brightness1 = $image1json['stream']['brightness'];
+        $colorSaturation1 = $image1json['stream']['colorSaturation'];
+        $contrast1 = $image1json['stream']['contrast'];
+        $sharpness1 = $image1json['stream']['sharpness'];
+
 
         $commande = "node setimagesettings.js  --Username=";
         $commande .= $Username;
@@ -1131,7 +1293,35 @@ class HostONVIF
         //echo $commande,"\n";
 
         $setimage = shell_exec($commande);
-        //echo $setimage;
+
+
+        $image2 = shell_exec($commande2);
+        
+
+        // TEST DE LA VALIDITE DE LA SORTIE DU SCRIPT
+        $this -> json_validate($image2);
+
+        // SI LE FICHIER EST VALIDE ALORS
+        //print_r($image2);
+
+        
+        $image2json = json_decode($image2, true);
+
+
+        // IMAGE SETTINGS
+        $brightness2 = $image2json['stream']['brightness'];
+        $colorSaturation2 = $image2json['stream']['colorSaturation'];
+        $contrast2 = $image2json['stream']['contrast'];
+        $sharpness2 = $image2json['stream']['sharpness'];
+
+        if ($brightness1 == $brightness2 && $colorSaturation1 == $colorSaturation2 && $contrast1 == $contrast2 && $sharpness1 == $sharpness2)
+        {
+            throw new Exception ('Valeurs non modifiées, veuillez réessayer ou les valeurs peuvent être hors de la portée de votre caméra');
+        }
+        else
+        {
+            echo "Aucune Erreur, Process Termine";
+        }
     }
 }
 
