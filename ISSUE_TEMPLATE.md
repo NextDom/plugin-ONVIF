@@ -1,6 +1,3 @@
-## Profil de caméra choisi
-
-
 ## Description
 
 
@@ -24,3 +21,6 @@
 * **Plateforme**:
 
 * **Version du Plugin**:
+
+
+* **Profil de caméra choisi**:
