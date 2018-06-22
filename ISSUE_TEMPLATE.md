@@ -1,4 +1,8 @@
+## Profil de caméra choisi
+
+
 ## Description
+
 
 ## Etapes à reproduire (pour les bugs)
 
@@ -9,10 +13,14 @@
 
 ## Contexte:
 
+
 ## Proposition de solution (optionnel):
+
 
 ## Environnement:
 
 * **Version Jeedom**:
+
 * **Plateforme**:
+
 * **Version du Plugin**:
