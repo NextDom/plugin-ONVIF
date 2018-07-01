@@ -15,7 +15,7 @@ function extract() {
     }); 
 
     // now you have an array containing only the XAddrs elements
-    console.log(xaddrs);
+    // console.log(xaddrs);
 
     json = JSON.stringify({xaddrs}, null , ' ');
     console.log(json);
