@@ -11,14 +11,18 @@ function sleep (time) {
 
 function extract() {
     test.forEach(cam => {
-       xaddrs.push(cam.probeMatches.probeMatch.XAddrs);
+       const deviceAddress = cam.probeMatches.probeMatch.XAddrs;
+
+       // only if the xaddrs is not in list yet, add it
+       if(test.filter(xad => xad === deviceAddress).length <= 0) {
+           xaddrs.push(cam.probeMatches.probeMatch.XAddrs);
+       }
     }); 
 
-    // now you have an array containing only the XAddrs elements
-    // console.log(xaddrs);
-
-    json = JSON.stringify({xaddrs}, null , ' ');
-    console.log(json);
+    // show the number of addresses
+    const listCount = xaddrs.length;
+    console.log('listCount:', listCount);
+    console.log(xaddrs);
 }
 
 
