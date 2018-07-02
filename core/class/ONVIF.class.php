@@ -25,6 +25,30 @@ require_once 'ONVIFCmd.class.php';
 class ONVIF extends eqLogic
 {
     /*     * *************************Attributs****************************** */
+    private $_Username;
+    private $_Password;
+    private $_IPadress;
+    private $_Port;
+    private $_VideoToken;
+    private $_PTZToken; 
+    private $_data;
+    private $_Xmin;
+    private $_Xmax;
+    private $_Ymin;
+    private $_Ymax;
+    private $_Zmin;
+    private $_Zmax;
+    private $_Xspeedmin;
+    private $_Xspeedmax;
+    private $_Yspeedmin;
+    private $_Yspeedmax;
+    private $_Zspeedmin;
+    private $_Zspeedmax;
+    private $_ZoomSpeedMin;
+    private $_ZoomSpeedMax;
+    private $_PanTiltSpeedMin;
+    private $_PanTiltSpeedMax;
+    private $_nombrecamera;
 
 
     /*     * ***********************Methode static*************************** */
@@ -113,15 +137,38 @@ class ONVIF extends eqLogic
       }
      */
 
-    /*     * **********************Getteur Setteur*************************** */
-}
-
-
 /**********************************************/
 /*                                            */
 /*---------------LISTE DES INFOS--------------*/
 /*                                            */
 /**********************************************/
+    
+    public function getcamera()
+    {
+       $commande = "node GetCamera.js";  
+       $camerasdiscovery = shell_exec($commande);
+       
+       print_r($camerasdiscovery);
+       $this -> json_validate($camerasdiscovery);
+       // Le fichier est maintenant vérifié
+
+       $cam = json_decode($camerasdiscovery);
+
+       $nombrecam = $cam[0];
+       $this -> setnombrecamera($nombrecam);
+       echo"Il y a ", $nombrecam," cameras","\n";
+       for($i = 1; $i <= $nombrecam; $i++) 
+       {
+       ${'adresse'.$i} = $cam[$i];
+       print_r('adresse'.$i);
+       echo ":\n";
+       print_r(${'adresse'.$i});
+       echo "\n";
+       }       
+    }
+
+
+
     public function gethost()
     {
         //THIS COMMAND GIVE TO $name THE NAME OF THE CAM
@@ -501,5 +548,242 @@ class ONVIF extends eqLogic
         $this -> getpresets();
         $this -> getnodes();
     }
+/*     * **********************Getteur Setteur*************************** */
+    /***********************************/
+    /*             GETTEURS            */
+    /***********************************/
+    public function getUsername()
+    {
+        
+        return $this->_Username;
+    }
+    
+    public function getPassword()
+    {
+        return $this->_Password; 
+    }
+    
+    public function getIPadress()
+    {
+        return $this->_IPadress;
+    }
+    
+    public function getPort()
+    {
+        return $this->_Port;
+    }
 
+    public function getXmin()
+    {
+        return $this->_Xmin;
+    }
+        
+    public function getXmax()
+    {
+        return $this->_Xmax;
+    }
+        
+    public function getYmin()
+    {
+        return $this->_Ymin;
+    }
+        
+    public function getYmax()
+    {
+        return $this->_Ymax;
+    }
+        
+    public function getZmin()
+    {
+        return $this->_Zmin;
+    }
+
+    public function getZmax()
+    {
+        return $this->_Zmax;
+    }
+        
+    public function getXspeedmin()
+    {
+        return $this->_Xspeedmin;
+    }
+        
+    public function getXspeedmax()
+    {
+        return $this->_Xspeedmax;
+    }
+  
+    public function getYspeedmin()
+    {
+        return $this->_Yspeedmin;
+    }
+        
+    public function getYspeedmax()
+    {
+        return $this->_Yspeedmax;
+    }
+    
+    public function getZspeedmin()
+    {
+        return $this->_Zspeedmin;
+    }
+        
+    public function getZspeedmax()
+    {
+        return $this->_Zspeedmax;
+    }
+
+    public function getPanTiltSpeedMin()
+    {
+        return $this->_PanTiltSpeedMin;
+    }
+    
+    public function getPanTiltSpeedMax()
+    {
+        return $this->_PanTiltSpeedMax;
+    }
+
+    public function getZoomSpeedMin()
+    {
+        return $this->_ZoomSpeedMin;
+    }
+    
+    public function getZoomSpeedMax()
+    {
+        return $this->_ZoomSpeedMax;
+    }
+
+    public function getnombrecamera()
+    {
+        return $this->_nombrecamera;
+    }
+
+
+    /***********************************/
+    /*             SETTEURS            */
+    /***********************************/
+
+    public function setUsername($Username)
+    {
+      $this->_Username = $Username;
+    }
+
+
+    public function setPassword($Password)
+    {
+      $this->_Password = $Password;
+    }
+    
+    
+    public function setIPadress($IPadress)
+    {
+      $this->_IPadress = $IPadress;
+    }
+    
+    
+    public function setPort($Port)
+    {
+  
+      $this->_Port = $Port;
+    }
+    
+
+    public function setXmin($XMIN)
+    {
+  
+      $this->_Xmin = $XMIN;
+    }
+
+    public function setXmax($XMAX)
+    {
+  
+      $this->_Xmax = $XMAX;
+    }
+
+    public function setYmin($YMIN)
+    {
+  
+      $this->_Ymin = $YMIN;
+    }
+
+    public function setYmax($YMAX)
+    {
+  
+      $this->_Ymin = $YMAX;
+    }
+
+    public function setZmin($ZMIN)
+    {
+  
+      $this->_Zmin = $ZMIN;
+    }
+
+    public function setZmax($ZMAX)
+    {
+  
+      $this->_Zmax = $ZMAX;
+    }
+
+    public function setXspeedmin($XSPEEDMIN)
+    {
+  
+      $this->_Xspeedmin = $XSPEEDMIN;
+    }
+
+    public function setXspeedmax($XSPEEDMAX)
+    {
+  
+      $this->_Xspeedmax = $XSPEEDMAX;
+    }
+    
+    public function setYspeedmin($YSPEEDMIN)
+    {
+  
+      $this->_Yspeedmin = $YSPEEDMIN;
+    }
+
+    public function setYspeedmax($YSPEEDMAX)
+    {
+  
+      $this->_Yspeedmax = $YSPEEDMAX;
+    }
+    
+    public function setZspeedmin($ZSPEEDMIN)
+    {
+  
+      $this->_Zspeedmin = $ZSPEEDMIN;
+    }
+
+    public function setZspeedmax($ZSPEEDMAX)
+    {
+  
+      $this->_Zspeedmax = $ZSPEEDMAX;
+    }
+    
+    public function setPanTiltSpeedMin($AbsXSpeed)
+    {
+        $this->_PanTiltSpeedMin = $AbsXSpeed;
+    }
+    
+    
+    public function setPanTiltSpeedMax($AbsXSpeed)
+    {
+        $this->_PanTiltSpeedMax = $AbsXSpeed;
+    }
+    
+    public function setZoomSpeedMin($AbsZSpeed)
+    {
+        $this->_ZoomSpeedMin = $AbsZSpeed;
+    }
+    
+    
+    public function setZoomSpeedMax($AbsZSpeed)
+    {
+        $this->_ZoomSpeedMax = $AbsZSpeed;
+    }
+
+    public function setnombrecamera($nbcam)
+    {
+        $this->_nombrecamera = $nbcam;
+    }
 }
