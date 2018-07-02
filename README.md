@@ -1,4 +1,4 @@
-plugin-ONVIF
+
 
 [![license](https://img.shields.io/github/license/NextDom/plugin-ONVIF.svg)](./LICENSE) [![GitHub contributors](https://img.shields.io/github/contributors/NextDom/plugin-ONVIF.svg)](../../graphs/contributors) [![GitHub release](https://img.shields.io/github/release/NextDom/plugin-ONVIF.svg)](../../releases) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/_USERNAME) [![Waffle.io - Columns and their card count](https://badge.waffle.io/NextDom/plugin-ONVIF.svg?columns=all)](https://waffle.io/NextDom/plugin-ONVIF)
 
@@ -17,6 +17,16 @@ Dependances requises:
 `npm install minimist`
 
 # Les commandes supportées:
+
+## La détéction de caméra:
+
+Le plugin propose de détécter les caméra supportant le protocole ONVIF, en affichant le nombre de caméra détécté et les adresses de ces differentes caméras par exemple dans un cas de figure avec deux caméras:
+
+`Nombre de camera = 2
+
+Adresse1: https://192.168.1.20:951/onvif/device_service
+
+Adresse2: https://192.168.1.28:4651/onvif/device_service`
 
 ## Actions supportées dans Jeedom:
 
