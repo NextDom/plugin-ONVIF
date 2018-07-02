@@ -45,6 +45,7 @@ class ONVIFCmd extends cmd
     private $_ZoomSpeedMax;
     private $_PanTiltSpeedMin;
     private $_PanTiltSpeedMax;
+    private $_nombrecamera;
 
     /*     * ***********************Methode static*************************** */
 
@@ -88,7 +89,19 @@ class ONVIFCmd extends cmd
 /*                                            */
 /**********************************************/
 
-    public function intervalX($variable)
+    /*
+    NE FONCTIONNE PAS SUITE A UN BUG SUR LE PROJET ONVIF
+
+    public function getcamera()
+    {
+       $commande = "node getcam.js";  
+       $camerasdiscovery = shell_exec($commande);
+       
+       print_r($camerasdiscovery);
+    }
+    */
+
+        public function intervalX($variable)
     {
         $Xminimum = $this -> getXmin();
         $Xmaximum = $this -> getXmax();
@@ -111,7 +124,7 @@ class ONVIFCmd extends cmd
     }
 
 
-    public function intervalY($variable)
+        public function intervalY($variable)
     {
         $Yminimum = $this -> getYmin();
         $Ymaximum = $this -> getYmax();
@@ -134,7 +147,7 @@ class ONVIFCmd extends cmd
     }
 
 
-    public function intervalZ($variable)
+        public function intervalZ($variable)
     {
         $Zminimum = $this -> getZmin();
         $Zmaximum = $this -> getZmax();
@@ -157,7 +170,7 @@ class ONVIFCmd extends cmd
     }
 
 
-    public function intervalPanTiltSpeed($variable)
+        public function intervalPanTiltSpeed($variable)
     {
         $minimum = $this -> getPanTiltSpeedMin();
         $maximum = $this -> getPanTiltSpeedMax();
@@ -180,7 +193,7 @@ class ONVIFCmd extends cmd
     }
 
 
-    public function intervalZoomSpeed($variable)
+        public function intervalZoomSpeed($variable)
     {
         $minimum = $this -> getZoomSpeedMin();
         $maximum = $this -> getZoomSpeedMax();
@@ -203,7 +216,7 @@ class ONVIFCmd extends cmd
     }
 
 
-    public function intervalXcontinuousSpeed($variable)
+        public function intervalXcontinuousSpeed($variable)
     {
         $minimum = $this -> getXspeedmin();
         $maximum = $this -> getXspeedmax();
@@ -226,7 +239,7 @@ class ONVIFCmd extends cmd
     }
 
 
-    public function intervalYcontinuousSpeed($variable)
+        public function intervalYcontinuousSpeed($variable)
     {
         $minimum = $this -> getYspeedmin();
         $maximum = $this -> getYspeedmax();
@@ -249,7 +262,7 @@ class ONVIFCmd extends cmd
     }
 
 
-    public function intervalZcontinuousSpeed($variable)
+        public function intervalZcontinuousSpeed($variable)
     {
         $minimum = $this -> getZspeedmin();
         $maximum = $this -> getZspeedmax();
@@ -664,6 +677,11 @@ class ONVIFCmd extends cmd
         return $this->_ZoomSpeedMax;
     }
 
+    public function getnombrecamera()
+    {
+        return $this->_nombrecamera;
+    }
+
 
     /***********************************/
     /*             SETTEURS            */
@@ -786,5 +804,10 @@ class ONVIFCmd extends cmd
     public function setZoomSpeedMax($AbsZSpeed)
     {
         $this->_ZoomSpeedMax = $AbsZSpeed;
+    }
+
+    public function setnombrecamera($nbcam)
+    {
+        $this->_nombrecamera = $nbcam;
     }
 }
