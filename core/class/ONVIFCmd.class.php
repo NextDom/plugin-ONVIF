@@ -88,20 +88,7 @@ class ONVIFCmd extends cmd
 /*-----------------INTERVALES-----------------*/
 /*                                            */
 /**********************************************/
-
-    /*
-    NE FONCTIONNE PAS SUITE A UN BUG SUR LE PROJET ONVIF
-
-    public function getcamera()
-    {
-       $commande = "node getcam.js";  
-       $camerasdiscovery = shell_exec($commande);
-       
-       print_r($camerasdiscovery);
-    }
-    */
-
-        public function intervalX($variable)
+    public function intervalX($variable)
     {
         $Xminimum = $this -> getXmin();
         $Xmaximum = $this -> getXmax();
