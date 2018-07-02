@@ -21,8 +21,10 @@ function extract() {
 
     // show the number of addresses
     const listCount = xaddrs.length;
-    console.log('listCount:', listCount);
-    console.log(xaddrs);
+    xaddrs.unshift(listCount);
+    xaddrsjson= JSON.stringify(xaddrs, null , ' ');
+    // console.log('listCount:', listCount);
+    console.log(xaddrsjson);
 }
 
 
