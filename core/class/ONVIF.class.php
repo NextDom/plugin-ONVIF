@@ -157,12 +157,20 @@ class ONVIF extends eqLogic
        $nombrecam = $cam[0];
        $this -> setnombrecamera($nombrecam);
        echo"Il y a ", $nombrecam," cameras","\n";
+       $j = 0;
        for($i = 1; $i <= $nombrecam; $i++) 
        {
-       ${'adresse'.$i} = $cam[$i];
-       print_r('adresse'.$i);
+       $j ++;
+       ${'ip'.$i} = $cam[$j];
+       $j ++;
+       ${'port'.$i} = $cam[$j];
+       print_r('ip '.$i);
        echo ":\n";
-       print_r(${'adresse'.$i});
+       print_r(${'ip'.$i});
+       echo "\n";
+       print_r('port '.$i);
+       echo ":\n";
+       print_r(${'port'.$i});
        echo "\n";
        }       
     }
