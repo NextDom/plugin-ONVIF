@@ -22,11 +22,13 @@ Dependances requises:
 
 Le plugin propose de détécter les caméra supportant le protocole ONVIF, en affichant le nombre de caméra détécté et les adresses de ces differentes caméras par exemple dans un cas de figure avec deux caméras:
 
-```Nombre de camera = 2
+```
+Nombre de camera = 2
 
 Adresse1: https://192.168.1.20:951/onvif/device_service
 
-Adresse2: https://192.168.1.28:4651/onvif/device_service```
+Adresse2: https://192.168.1.28:4651/onvif/device_service
+```
 
 ## Actions supportées dans Jeedom:
 
