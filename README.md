@@ -62,7 +62,7 @@ On aurait deux équipements générés avec l'url déjà renseignée.
 * GetSnapshotURL
 
 # FORUM
-[Forum Nextdom](https://www.nextdom.org/plugin-onvif/plugin-onvif)
+[Forum Nextdom](https://www.nextdom.org/forum/plugin-onvif)
 
 # Documentation du plugin:
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](docs/fr_FR/presentation.md)
