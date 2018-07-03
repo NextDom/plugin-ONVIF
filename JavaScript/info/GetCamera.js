@@ -15,12 +15,16 @@ function extract() {
 
        // only if the xaddrs is not in list yet, add it
        if(test.filter(xad => xad === deviceAddress).length <= 0) {
-           xaddrs.push(cam.probeMatches.probeMatch.XAddrs);
+           adresse = cam.probeMatches.probeMatch.XAddrs;
+           ip = adresse.split('/')[2].split(':')[0];
+		   port = adresse.split('/')[2].split(':')[1];
+		   xaddrs.push(ip);
+		   xaddrs.push(port);
        }
     }); 
 
     // show the number of addresses
-    const listCount = xaddrs.length;
+    const listCount = xaddrs.length/2;
     xaddrs.unshift(listCount);
     xaddrsjson= JSON.stringify(xaddrs, null , ' ');
     // console.log('listCount:', listCount);
@@ -30,7 +34,7 @@ function extract() {
 
 
 onvif.Discovery.on('device', function(cam,rinfo,xml){
-    // function will be called as soon as NVT responses
+    // function will be called as soon as Cam responses
 test.push(cam);
 
 });
