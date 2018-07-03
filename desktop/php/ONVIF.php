@@ -146,29 +146,38 @@ $eqLogics = eqLogic::byType($plugin->getId());
                                     ?>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label"></label>
-                                <div class="col-sm-9">
-                                    <label class="checkbox-inline" for="is-enable">
-                                        <input type="checkbox" class="eqLogicAttr" data-l1key="isEnable"
-                                               checked="checked" id="is-enable"/>
-                                        {{Activer}}
-                                    </label>
-                                    <label class="checkbox-inline" for="is-visible">
-                                        <input type="checkbox" class="eqLogicAttr" data-l1key="isVisible"
-                                               checked="checked" id="is-visible"/>
-                                        {{Visible}}
-                                    </label>
-                                </div>
+                        <div class="form-group">
+                          <label class="col-sm-2 control-label" ></label>
+                            <div class="col-sm-10">
+                            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>Activer</label>
+                            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>Visible</label>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label" for="ONVIF-param">{{ONVIF param
-                                    1}}</label>
-                                <div class="col-sm-3">
-                                    <input type="text" class="eqLogicAttr form-control" id="ONVIF-param"
-                                           data-l1key="configuration" data-l2key="city" placeholder="param1"/>
-                                </div>
+                            <a class="btn btn-default" id="bt_goCarte" title='{{Accéder à la carte}}'><i class="fa fa-cogs"></i></a>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">{{IP de la Camera}}</label>
+                            <div class="col-lg-3">
+                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="adresseip"/>
                             </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">{{Port}}</label>
+                            <div class="col-lg-3">
+                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="port"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">{{Utilisateur}}</label>
+                            <div class="col-lg-3">
+                                <input type="text" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="username"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">{{Mot de passe}}</label>
+                            <div class="col-lg-3">
+                                <input type="password" class="eqLogicAttr form-control" data-l1key="configuration" data-l2key="password"/>
+                            </div>
+                        </div>
                         </fieldset>
                     </form>
                 </div>
