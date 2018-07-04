@@ -1,8 +1,6 @@
 
 
-[![license](https://img.shields.io/github/license/NextDom/plugin-ONVIF.svg)](./LICENSE) [![GitHub contributors](https://img.shields.io/github/contributors/NextDom/plugin-ONVIF.svg)](../../graphs/contributors) [![GitHub release](https://img.shields.io/github/release/NextDom/plugin-ONVIF.svg)](../../releases) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/_USERNAME) [![Waffle.io - Columns and their card count](https://badge.waffle.io/NextDom/plugin-ONVIF.svg?columns=all)](https://waffle.io/NextDom/plugin-ONVIF)
-
-[![Join the chat at https://gitter.im/NextDom/Developpement](https://badges.gitter.im/NextDom/plugin-ONVIF.svg)](https://gitter.im/NextDom/plugin-ONVIF?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![license](https://img.shields.io/github/license/NextDom/plugin-ONVIF.svg)](./LICENSE) [![GitHub contributors](https://img.shields.io/github/contributors/NextDom/plugin-ONVIF.svg)](../../graphs/contributors) [![GitHub release](https://img.shields.io/github/release/NextDom/plugin-ONVIF.svg)](../../releases) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/_USERNAME) [![Waffle.io - Columns and their card count](https://badge.waffle.io/NextDom/plugin-ONVIF.svg?columns=all)](https://waffle.io/NextDom/plugin-ONVIF) [![Join the chat at https://gitter.im/NextDom/Developpement](https://badges.gitter.im/NextDom/plugin-ONVIF.svg)](https://gitter.im/NextDom/plugin-ONVIF?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ### Master: [![Build Status](https://travis-ci.org/NextDom/plugin-ONVIF.svg?branch=master)](https://travis-ci.org/NextDom/plugin-ONVIF)  [![Coverage Status](https://coveralls.io/repos/github/NextDom/plugin-ONVIF/badge.svg?branch=master)](https://coveralls.io/github/NextDom/plugin-ONVIF?branch=master)
 
