@@ -156,23 +156,27 @@ class ONVIF extends eqLogic
 
        $nombrecam = $cam[0];
        $this -> setnombrecamera($nombrecam);
-       echo"Il y a ", $nombrecam," cameras","\n";
-       $j = 0;
+
        for($i = 1; $i <= $nombrecam; $i++) 
        {
-       $j ++;
-       ${'ip'.$i} = $cam[$j];
-       $j ++;
-       ${'port'.$i} = $cam[$j];
-       print_r('ip '.$i);
-       echo ":\n";
-       print_r(${'ip'.$i});
-       echo "\n";
-       print_r('port '.$i);
-       echo ":\n";
-       print_r(${'port'.$i});
-       echo "\n";
-       }       
+        $eqLogic = new self();
+        $eqLogic->setLogicalId('camera' . $i);
+        $eqLogic->setName('camera'.$i);
+        $eqLogic->setEqType_name('ONVIF');
+        $eqLogic->setIsVisible(0);
+        $eqLogic->setIsEnable(1);
+        $j ++;
+        ${'ip'.$i} = $cam[$j];
+        log::add('ONVIF','debug','Création de l\'équipement Camera'$i);
+        $j ++;
+        ${'port'.$i} = $cam[$j];
+        log::add('ONVIF','debug','Affectation de l\'ip '${'ip'.$i} 'à l\'équipement Camera'$i);
+        log::add('ONVIF','debug','Affectation du port '${'port'.$i} 'à l\'équipement Camera'$i);
+        $eqLogic->setConfiguration('adresseip', ${'ip'.$i});
+        $eqLogic->setConfiguration('port', ${'port'.$i});
+        $eqLogic->save();
+        }
+
     }
 
 
