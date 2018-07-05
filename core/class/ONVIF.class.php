@@ -143,6 +143,30 @@ class ONVIF extends eqLogic
 /*                                            */
 /**********************************************/
     
+       public function json_validate($_test)
+    {
+    // Decode pour test erreur
+    $result = json_decode($_test);
+
+
+    if(json_last_error() != JSON_ERROR_NONE) 
+    {
+        throw new Exception(json_last_error());
+         // Exit sur exeption
+        echo "Erreur \n";
+        echo $_error;
+    }
+    // Fin sans erreur
+    $_test2 = json_decode($_test);
+    if ($_test2 =='null' || $_test2 =='')
+    {
+        throw new Exception('Fichier Vide');
+    }
+
+    log::add('ONVIF','debug','Aucune erreur dans le décodage du JSON');  
+    
+    }
+
     public function getcamera()
     {
        $commande = "node GetCamera.js";  
