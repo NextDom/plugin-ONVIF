@@ -677,25 +677,28 @@ class ONVIFCmd extends cmd
     public function setUsername($Username)
     {
       $this->_Username = $Username;
+      return $this;
     }
 
 
     public function setPassword($Password)
     {
       $this->_Password = $Password;
+      return $this;
     }
     
     
     public function setIPadress($IPadress)
     {
       $this->_IPadress = $IPadress;
+      return $this;
     }
     
     
     public function setPort($Port)
     {
-  
       $this->_Port = $Port;
+      return $this;
     }
     
 
@@ -703,18 +706,20 @@ class ONVIFCmd extends cmd
     {
   
       $this->_Xmin = $XMIN;
+      return $this;
     }
 
     public function setXmax($XMAX)
     {
-  
       $this->_Xmax = $XMAX;
+      return $this;
     }
 
     public function setYmin($YMIN)
     {
   
       $this->_Ymin = $YMIN;
+      return $this;
     }
 
     public function setYmax($YMAX)
