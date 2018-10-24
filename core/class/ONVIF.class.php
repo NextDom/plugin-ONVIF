@@ -19,7 +19,7 @@
 
 
 /* * ***************************Includes********************************* */
-require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
+require_once __DIR__ . '/../../../../core/php/core.inc.php';
 require_once 'ONVIFCmd.class.php';
 
 class ONVIF extends eqLogic
@@ -49,93 +49,6 @@ class ONVIF extends eqLogic
     private $_PanTiltSpeedMin;
     private $_PanTiltSpeedMax;
     private $_nombrecamera;
-
-
-    /*     * ***********************Methode static*************************** */
-
-    /*
-     * Fonction exécutée automatiquement toutes les minutes par Jeedom
-      public static function cron() {
-
-      }
-     */
-
-
-    /*
-     * Fonction exécutée automatiquement toutes les heures par Jeedom
-      public static function cronHourly() {
-
-      }
-     */
-
-    /*
-     * Fonction exécutée automatiquement tous les jours par Jeedom
-      public static function cronDaily() {
-
-      }
-     */
-
-
-    /*     * *********************Méthodes d'instance************************* */
-
-    public function preInsert()
-    {
-
-    }
-
-    public function postInsert()
-    {
-
-    }
-
-    public function preSave()
-    {
-
-    }
-
-    public function postSave()
-    {
-
-    }
-
-    public function preUpdate()
-    {
-
-    }
-
-    public function postUpdate()
-    {
-
-    }
-
-    public function preRemove()
-    {
-
-    }
-
-    public function postRemove()
-    {
-
-    }
-
-    /*
-     * Non obligatoire mais permet de modifier l'affichage du widget si vous en avez besoin
-      public function toHtml($_version = 'dashboard') {
-
-      }
-     */
-
-    /*
-     * Non obligatoire mais ca permet de déclencher une action après modification de variable de configuration
-      public static function postConfig_<Variable>() {
-      }
-     */
-
-    /*
-     * Non obligatoire mais ca permet de déclencher une action avant modification de variable de configuration
-      public static function preConfig_<Variable>() {
-      }
-     */
 
 /**********************************************/
 /*                                            */
@@ -214,7 +127,6 @@ class ONVIF extends eqLogic
         $IPadress = $this->_IPadress;
         $Password = $this->_Password;
         $Username = $this->_Username;
-
         
         $commande = "node gethost.js  --Username=";
         $commande .= $Username;
@@ -342,14 +254,12 @@ class ONVIF extends eqLogic
 
         $node = shell_exec($commande);
         
-
         // TEST DE LA VALIDITE DE LA SORTIE DU SCRIPT
         $this -> json_validate($node);
 
         // SI LE FICHIER EST VALIDE ALORS
 
         $nodejson = json_decode($node, true);
-
 
         // NODES VALUES
         $XRangeMax = $nodejson['nodes']['000']['supportedPTZSpaces']['absolutePanTiltPositionSpace']['XRange']['max'];
@@ -372,8 +282,6 @@ class ONVIF extends eqLogic
         $ZContinuousspeedmin = $nodejson['nodes']['000']['supportedPTZSpaces']['continuousZoomVelocitySpace']['XRange']['min']; 
         $ZContinuousspeedmax =  $nodejson['nodes']['000']['supportedPTZSpaces']['continuousZoomVelocitySpace']['XRange']['max'];
 
-
-
         // PUT VALUES TO PRIVATE VARIABLES
         $this -> setXmin($XRangeMin);
         $this -> setXmax($XRangeMax);
@@ -392,7 +300,6 @@ class ONVIF extends eqLogic
         $this -> setPanTiltSpeedMin($PanspeedMin);
         $this -> setPanTiltSpeedMax($PanspeedMax);
     }
-
 
     public function getstream()
     {
@@ -417,7 +324,6 @@ class ONVIF extends eqLogic
 
         $stream = shell_exec($commande);
         
-
         // TEST DE LA VALIDITE DE LA SORTIE DU SCRIPT
         $this -> json_validate($stream);
 
@@ -428,6 +334,7 @@ class ONVIF extends eqLogic
         $StreamUri = $streamjson['stream']['uri'];
 
     }
+    
     public function getsnap()
     {
 
@@ -450,13 +357,11 @@ class ONVIF extends eqLogic
 
         $snap = shell_exec($commande);
         
-
         // TEST DE LA VALIDITE DE LA SORTIE DU SCRIPT
         $this -> json_validate($snap);
 
         // SI LE FICHIER EST VALIDE ALORS
         $snapjson = json_decode($snap, true);
-
 
         // SNAP URL
         $SnapUri = $snapjson['snap']['uri'];
@@ -522,7 +427,6 @@ class ONVIF extends eqLogic
 
         $profile = shell_exec($commande);
         
-
         // TEST DE LA VALIDITE DE LA SORTIE DU SCRIPT
         $this -> json_validate($profile);
 
@@ -584,13 +488,12 @@ class ONVIF extends eqLogic
         $this -> getpresets();
         $this -> getnodes();
     }
-/*     * **********************Getteur Setteur*************************** */
+
     /***********************************/
     /*             GETTEURS            */
     /***********************************/
     public function getUsername()
     {
-        
         return $this->_Username;
     }
     
@@ -702,124 +605,132 @@ class ONVIF extends eqLogic
     public function setUsername($Username)
     {
       $this->_Username = $Username;
+      return $this;
     }
 
 
     public function setPassword($Password)
     {
       $this->_Password = $Password;
+      return $this;
     }
     
     
     public function setIPadress($IPadress)
     {
       $this->_IPadress = $IPadress;
+      return $this;
     }
     
     
     public function setPort($Port)
     {
-  
       $this->_Port = $Port;
+      return $this;
     }
     
 
     public function setXmin($XMIN)
     {
-  
       $this->_Xmin = $XMIN;
+      return $this;
     }
 
     public function setXmax($XMAX)
     {
-  
       $this->_Xmax = $XMAX;
+      return $this;
     }
 
     public function setYmin($YMIN)
     {
-  
       $this->_Ymin = $YMIN;
+        
     }
 
     public function setYmax($YMAX)
     {
-  
       $this->_Ymin = $YMAX;
+      return $this;
     }
 
     public function setZmin($ZMIN)
     {
-  
       $this->_Zmin = $ZMIN;
+      return $this;
     }
 
     public function setZmax($ZMAX)
     {
-  
       $this->_Zmax = $ZMAX;
+      return $this;
     }
 
     public function setXspeedmin($XSPEEDMIN)
     {
-  
       $this->_Xspeedmin = $XSPEEDMIN;
+      return $this;
     }
 
     public function setXspeedmax($XSPEEDMAX)
     {
-  
       $this->_Xspeedmax = $XSPEEDMAX;
+      return $this;
     }
     
     public function setYspeedmin($YSPEEDMIN)
     {
-  
       $this->_Yspeedmin = $YSPEEDMIN;
+      return $this;
     }
 
     public function setYspeedmax($YSPEEDMAX)
     {
-  
       $this->_Yspeedmax = $YSPEEDMAX;
+      return $this;
     }
     
     public function setZspeedmin($ZSPEEDMIN)
     {
-  
       $this->_Zspeedmin = $ZSPEEDMIN;
+      return $this;
     }
 
     public function setZspeedmax($ZSPEEDMAX)
     {
-  
       $this->_Zspeedmax = $ZSPEEDMAX;
+      return $this;
     }
     
     public function setPanTiltSpeedMin($AbsXSpeed)
     {
         $this->_PanTiltSpeedMin = $AbsXSpeed;
+        return $this;
     }
     
     
     public function setPanTiltSpeedMax($AbsXSpeed)
     {
         $this->_PanTiltSpeedMax = $AbsXSpeed;
+        return $this;
     }
     
     public function setZoomSpeedMin($AbsZSpeed)
     {
         $this->_ZoomSpeedMin = $AbsZSpeed;
+        return $this;
     }
     
     
     public function setZoomSpeedMax($AbsZSpeed)
     {
         $this->_ZoomSpeedMax = $AbsZSpeed;
+        return $this;
     }
 
     public function setnombrecamera($nbcam)
     {
         $this->_nombrecamera = $nbcam;
+        return $this;
     }
 }
